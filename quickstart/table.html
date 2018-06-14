@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS表格</title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="myCtrl">
+        <table>
+            <tr>
+                <th>Serial</th>
+                <th>name</th>
+                <th>url</th>
+                <th>country</th>
+            </tr>
+            <tr ng-repeat="x in sites | orderBy : 'Country'">
+                <!--<td>{{$index+1}}</td>
+                <td>{{x.Name}}</td>
+                <td>{{x.Url}}</td>
+                <td>{{x.Country}}</td>-->
+                <td ng-if="$odd" style="background-color:#f1f1f1">{{ $index+1 }}</td>
+                <td ng-if="$even">{{ $index+1 }}</td>
+                <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Name }}</td>
+                <td ng-if="$even">{{ x.Name }}</td>
+                <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Url }}</td>
+                <td ng-if="$even">{{ x.Url }}</td>
+                <td ng-if="$odd" style="background-color:#f1f1f1">{{ x.Country }}</td>
+                <td ng-if="$even">{{ x.Country }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl",function ($scope,$http) {
+        $http.get("./data/site.json").then(function (resp) {
+            $scope.sites = resp.data.sites;
+        },function (error) {
+            console.log(error);
+        })
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS自定义过滤器</title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="personCtrl">
+        姓名: {{ msg | reverse }}
+    </div>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("personCtrl",function ($scope) {
+        $scope.msg = "admin client";
+    });
+    app.filter('reverse',function () {
+        return function(text) {
+            return text.split(" ").reverse().join(" ");
+        }
+    })
+</script>
+</body>
+</html>

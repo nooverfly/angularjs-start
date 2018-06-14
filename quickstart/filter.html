@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS过滤器</title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="personCtrl">
+        <p>姓名为 {{ lastName | uppercase }}</p>
+        <p>姓名为 {{ lastName | lowercase }}</p>
+        quantity: <input type="number" ng-model="quantity">
+        price: <input type="number" ng-model="price">
+        总价 = {{ (quantity * price) | currency }}
+    </div>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("personCtrl",function ($scope) {
+        $scope.lastName = "adMin";
+    });
+</script>
+</body>
+</html>

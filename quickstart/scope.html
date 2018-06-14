@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Scope(作用域)</title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="myApp">
+    <div ng-controller="myCtrl">
+        <input ng-model="name">
+        <h1>{{greeting}}</h1>
+        <button ng-click='sayHello()'>点我</button>
+        <h1>{{lastname}} 家族成员:</h1>
+        <ul>
+            <li ng-repeat="x in names">{{x}} {{lastname}}</li>
+        </ul>
+    </div>
+    <div ng-controller="myCtrl1">
+        <div>scope中的值是{{lastname_1}}</div>
+        <div>rootscope中的值是{{$root.lastname}}</div>
+    </div>
+</div>
+<script>
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl",function ($scope,$rootScope) {
+        $scope.name = "overfly";
+        $scope.sayHello = function () {
+            $scope.greeting = 'Hello ' + $scope.name + '!';
+        };
+        //$rootScope.lastname = "Refsnes";
+        $scope.names = ["Emil", "Tobias", "Linus"];
+    });
+    app.controller("myCtrl1",function ($scope,$rootScope) {
+        $scope.lastname_1 = "admin";
+        $rootScope.lastname = "client";
+    });
+</script>
+</body>
+</html>

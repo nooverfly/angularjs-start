@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS模型</title>
+    <script src="../js/angular.min.js"></script>
+    <style>
+        input.ng-invalid {
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <form name="myForm">
+        输入你的名字:
+        <input name="myName" ng-model="text" required>
+        Email:
+        <input type="email" name="myAddress" ng-model="myText" required></p>
+        <h1>状态</h1>
+        {{myForm.myAddress.$valid}}
+        {{myForm.myAddress.$dirty}}
+        {{myForm.myAddress.$touched}}
+    </form>
+</div>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller("myCtrl",function ($scope) {
+        $scope.myText = "test@runoob.com";
+    });
+</script>
+</body>
+</html>

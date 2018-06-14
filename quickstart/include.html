@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS包含</title>
+    <script src="../js/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<div ng-include="'./html/purehtml.html'"></div>
+<div ng-include="'./html/jshtml.html'"></div>
+<!--<div ng-include="'http://localhost:8080/ajax.html'"></div>-->
+<script>
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function ($scope) {
+        $scope.names = [{name: '菜鸟教程', url: 'www.runoob.com'}, {name: '菜鸟工具', url: '	c.runoob.com'},
+            {name: 'Google搜索', url: 'www.google.com'}];
+    });
+    //设置域名访问白名单
+    /*app.config(function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist([
+            'http://localhost:63342/!**',
+            'http://localhost:8080/!**'
+        ]);
+    });*/
+</script>
+</body>
+</html>
